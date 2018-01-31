@@ -1,0 +1,15 @@
+<div class="ui-g navbar">
+  <div class="ui-g-2" *ngIf="nav.visible;else emptyBar">
+    <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+    <button #btn type="button" pButton icon="fa fa-bars" (click)="menu.toggle($event)"></button>
+  </div>
+  <ng-template #emptyBar>
+    <div class="ui-g-2">&nbsp;</div>
+  </ng-template>
+  <div class="ui-g-6 navbar-header">
+    Darts Darts Darts
+  </div>
+  <div class="ui-g-2">&nbsp;</div>
+</div>
+<br />
+<br />

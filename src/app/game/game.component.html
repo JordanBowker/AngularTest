@@ -1,0 +1,95 @@
+<div class="content-section implementation ui-fluid">
+  <div class="ui-g">
+    <div *ngIf="showGame">
+      <div class="ui-g-12 ui-md-12" style="text-align: center">
+        <h1>{{currentScore}}</h1>
+      </div>
+      <div *ngIf="allowInput;else confirmTurn">
+        <div class="ui-g-4 ui-md-2">
+          <span class="ui-float-label">
+            <input type="number" id="tb_throw1" pInputText
+                   [(ngModel)]="currentTurn.throw1"
+                   (ngModelChange)="updateCurrentScore()"
+                   (keypress)="preventInvalidDartScores($event)" />
+            <label for="tb_throw1">Throw 1</label>
+          </span>
+        </div>
+        <div class="ui-g-4 ui-md-2">
+          <span class="ui-float-label">
+            <input type="number" id="tb_throw2" pInputText
+                   [(ngModel)]="currentTurn.throw2"
+                   (ngModelChange)="updateCurrentScore()"
+                   (keypress)="preventInvalidDartScores($event)" />
+            <label for="tb_throw2">Throw 2</label>
+          </span>
+        </div>
+        <div class="ui-g-4 ui-md-2">
+          <span class="ui-float-label">
+            <input type="number" id="tb_throw3" pInputText
+                   [(ngModel)]="currentTurn.throw3"
+                   (ngModelChange)="updateCurrentScore()"
+                   (keypress)="preventInvalidDartScores($event)" />
+            <label for="tb_throw3">Throw 3</label>
+          </span>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+          <button pButton (click)="onEnterScore()" label="Enter Score"></button>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+          <button pButton class="ui-button-secondary" (click)="onBust()" label="Bust"></button>
+        </div>
+      </div>
+      <ng-template #confirmTurn>
+        <div class="ui-g-12 ui-md-6" style="text-align: center; font-weight: bold; font-size: large;">
+          {{confirmationText}}
+        </div>
+        <div class="ui-g-12 ui-md-3">
+          <button pButton class="ui-button-success" (click)="onConfirmTurn()" label="Confirm"></button>
+        </div>
+        <div class="ui-g-12 ui-md-3">
+          <button pButton class="ui-button-warning" (click)="onReEnterScore()" label="Re-Enter Score"></button>
+        </div>
+      </ng-template>
+      <div class="ui-g-12">
+        <div class="chalkboard">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th>Turn</th>
+                <th>Remaining</th>
+                <th>Previous</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let turnScore of displayedTurnScores">
+                <td>{{turnScore.turnNumber}}</td>
+                <td>{{turnScore.remainingScore}}</td>
+                <td>{{turnScore.previousScore}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br />
+        <div *ngIf="showEndGameButton;else endGameConfirmation">
+          <button pButton class="ui-button-danger" (click)="onEndGame()" label="EndGame"></button>
+        </div>
+        <ng-template #endGameConfirmation>
+          <div class="ui-g-12 ui-md-6" style="text-align: center; font-weight: bold; font-size: large;">
+            Are you sure you want to finish this game? It will count as a loss.
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <button pButton class="ui-button-success" (click)="onConfirmEndGame()" label="Yes"></button>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <button pButton class="ui-button-danger" (click)="onReEnterScore()" label="No"></button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div *ngIf="showStartGameOptions" class="ui-g-12 ui-md-12" style="text-align: center">
+      <h1><u>Pick a Game</u></h1>
+      <button pButton class="gameButton" label="501" (click)="createGameWithStartingScore(501)"></button>
+      <button pButton class="gameButton" label="301" (click)="createGameWithStartingScore(301)"></button>
+    </div>
+   </div>
+</div>

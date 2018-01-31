@@ -1,0 +1,29 @@
+<div class="content-section implementation ui-fluid">
+  <div class="ui-g">
+      <div class="ui-g-2 ui-md-3">
+        &nbsp;
+      </div>
+    <div class="ui-g-8 ui-md-6">
+      <p-panel [style]="{'margin-top':'20px'}">
+        <br/>
+        <span class="ui-float-label">
+          <input type="text" pInputText [(ngModel)]="loginModel.username">
+          <label for="float-input">Username</label>
+        </span>
+        <br/>
+        <span class="ui-float-label">
+          <input type="password" pInputText [(ngModel)]="loginModel.password" (keydown.enter)="login()" >
+          <label for="float-input">Password</label>
+        </span>
+        <br/>
+        <button pButton (click)="login()" label="Login" [disabled]="disableLoginButton"></button>
+      </p-panel>
+    </div>
+      <div class="ui-g-2 ui-md-3">
+        &nbsp;
+      </div>
+
+    </div>
+  </div>
+
+<p-confirmDialog global="true" header="Error" appendTo="body" rejectLabel="Try Again" rejectIcon=""></p-confirmDialog>

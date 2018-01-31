@@ -1,0 +1,56 @@
+.chalkboard {
+  font-size: 1.5em;
+  color: #E8E8E8;
+  font-family: cursive;
+  display: block;
+  background-color: #497959;
+  padding: 1em 1em;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: #000000 solid 0.2em;
+  background-image: url("../../assets/chalkboard-green.jpg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  position: relative;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td, table th {
+  border: 0.05em solid #E8E8E8;
+}
+
+table tr {
+  text-align: center;
+}
+
+table tr:first-child th {
+  border-top: 0;
+}
+
+table tr:last-child td {
+  border-bottom: 0;
+}
+
+table tr td:first-child,
+table tr th:first-child {
+  border-left: 0;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+  border-right: 0;
+}
+
+table tr td {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.gameButton {
+  height: 100px;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
